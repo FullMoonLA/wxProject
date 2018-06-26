@@ -1,0 +1,110 @@
+/* pages/comment/comment.wxss */
+/*星星的样式*/
+ .zan-font-16{
+  font-size:16px
+} 
+page{
+  font-size: 36rpx;
+  background-color: #fff;
+  align-items: center;
+  
+}
+.com-title{
+  margin-top: 50rpx;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #555
+}
+.com-tips{
+  color: #999
+}
+.line-css {
+    display: block;
+    height: 2rpx;
+    width: 70%;
+    background: #ccc;
+    margin:  20rpx 0;
+}
+.com-Text{
+  color: #555
+}
+.content{
+  margin-bottom: 20rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+.score{
+  display: flex;
+  align-items: center;
+  height: 20rpx;
+  line-height: 60rpx
+}
+.content .my-ib{
+  display: flex;
+  flex-direction: row;
+  font-size: 43rpx;
+}
+.starScore{
+    display: inline-block;
+    flex-direction: row; 
+    width: 43rpx;
+    height: 43rpx;
+    background-size: 43rpx 43rpx;
+    margin-left: 40rpx;
+}
+.com-content{
+  background: #f2f2f2;
+  padding: 20rpx;
+}
+textarea{
+  width: 610rpx
+}
+.com-submit{
+  margin-top: 20rpx;
+  height: 80rpx;
+  width: 650rpx;
+  background: #28B98F;
+  line-height: 80rpx;
+  color: #fff
+}
+.stars{
+    background-image: "../../images/star_icon.png";
+    width: 43rpx;
+    height: 43rpx;
+    background-size: 43rpx 43rpx;
+    margin-left: 40rpx;
+}
+.on{
+    background-image: "../../images/star_icon.png";
+    width: 43rpx;
+    height: 43rpx;
+    background-size: 43rpx 43rpx;
+    /*margin-left: 10px;*/
+}
+ /* .l-evalbox{
+  height: 100rpx;
+  padding: 0 3%;
+  margin-top: 10rpx;
+  background: #FFF;
+  line-height: 100rpx;
+}
+.l-evaltxt{
+  width: 120rpx;
+  display: block;
+  font-size: 26rpx;
+  color: #666666;
+}
+.l-evalist .icon{
+  background-position: -77rpx -246rpx;
+  width: 40rpx;
+  height: 43rpx;
+  margin-right: 30rpx;
+}
+.l-evalist .cur{
+  background-position: -128rpx -246rpx;
+}
+.l-evalist .icon:last-child{
+  margin: 0;
+}  */

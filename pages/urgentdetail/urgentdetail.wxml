@@ -1,0 +1,68 @@
+<!--pages/urgentdetail/urgentdetail.wxml-->
+<view>
+    <view class='detailtop'>
+        <text>编号：{{details.orderNum}}</text>
+        <label class='stu'>
+        <block wx:if="{{details.status == 0}}">
+                    待支付
+        </block>
+        <block wx:if="{{details.status == 1}}">
+                    待合作
+        </block>
+        <block wx:if="{{details.status == 2}}">
+                    待服务
+        </block>
+        <block wx:if="{{details.status == 3}}">
+                    待确认
+        </block>
+        <block wx:if="{{details.status == 5}}">
+                    已完成
+        </block>
+        </label>
+    </view>
+    <view class='contain'>
+        
+        <view class='detailcenter'>
+            <view class='comrow'><text class='text-color'> 报修人：</text>{{details.cusUserName}}</view>
+            <view class='comrow'><text class='text-color'> 电话：</text>{{details.cusUserPhone}}</view>
+            <view class='comrow'><text class='text-color'> 费用：</text>￥{{details.price}}</view>
+            <view class='comrow'><text class='text-color'> 创建时间：</text>{{details.createTime}}</view>
+            <view class='comrow'><text class='text-color'> 地址：</text>{{details.city}}{{details.district}}{{details.address}}</view>
+            <!-- <view class='comrow paytype'> -->
+            <view class='comrow'><text class='text-color'> 支付方式：</text>
+                <block wx:if="{{details.payType == 0}}">未支付</block>
+                <block wx:elif="{{details.payType == 1}}">支付宝</block>
+                <block wx:elif="{{details.payType == 2}}">微信</block>
+            </view>
+            <view class='comrow'><text class='text-color'> 支付时间：</text>
+                <block wx:if="{{details.payTime == '1970/01/01 08:00:00'}}">未支付</block>
+                <block wx:elif="{{details.payTime == ''}}">未支付</block>
+                <block wx:elif="{{details.payTime}}">{{details.payTime}}</block>
+            </view>
+            <!-- </view> -->
+            <view class='comrow'><text class='text-color'> 维修说明：</text>{{details.description}}</view>
+        </view>
+
+        
+    </view>
+    <view class='detailbottom' hidden="{{details.serUserName == ''? true : false }}">
+        <!-- <view class='comrow'> -->
+        <view  class='comrow'><text class='text-color'> 维修人员：</text>{{details.serUserName}}</view>
+        <view  class='comrow'><text class='text-color'>电话：</text>{{details.serUserPhone}}</view>
+        <!-- </view> -->
+        <view hidden="{{details.enterTime == '1970/01/01 08:00:00'? true : false }}"><text class='text-color'>完成时间：</text>{{details.enterTime}}</view>
+        <!-- </view> -->
+    </view>
+    <view class='rep-img-box'> 
+        <text class='imgtext'>报修图片</text> 
+        <block wx:for="{{targetImage}}"  wx:for-item="item" wx:key = "*this">
+            <image mode='aspectfill' bindtap='previewImg'  data-src="{{item}}" src="{{item}}"  data-index="{{index}}"></image>
+        </block>
+        
+    </view> 
+    <view class='rep-img-box' hidden="{{hidimg}}">
+        <view class='imgtext'>维修后图片</view> 
+        <image mode='aspectfill' bindtap='previewImg2' data-src="{{details.proofImage}}" src="{{details.proofImage}}"></image>
+    </view> 
+
+</view>

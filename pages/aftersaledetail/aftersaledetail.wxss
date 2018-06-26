@@ -1,0 +1,145 @@
+/* pages/aftersalsedetail/aftersaledetail.wxss */
+page{
+  background: #f2f2f2;
+}
+.navbar{
+  flex: none;
+  display: flex;
+  background: #fff;
+   /* margin-top: 10rpx; */
+  /* background: #ECECEC; */
+  /* border-bottom: 1px solid #ECECEC;  */
+  border-top: 1px solid #ECECEC;
+  font-size: 30rpx;
+}
+.navbar .item{
+  position: relative;
+  flex: auto;
+  text-align: center;
+  line-height: 60rpx; 
+  background: #fff;
+}
+.navbar .item.active{
+  color: #28B98F;
+}
+.detailtop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-top: 1px solid #E4E4E4; 
+    line-height: 60rpx;
+    padding: 0 20rpx;
+    background: #fff;
+}
+/* =========================== */
+.contain {
+  width: 100%;
+  height: 100%;
+  background: #f2f2f2
+}
+.layoutrow {
+  display: flex;
+  flex-direction: row;
+  padding: 10rpx 20rpx;
+}
+.layoutrow image{
+  border-radius: 50%;
+  width: 100rpx;
+  height: 100rpx;
+}
+/* .layoutrow  */
+.cloum {
+  padding-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+.layoutsp-ad{
+  line-height: 60rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; 
+  border-bottom: 1px solid #f2f2f2;
+}
+.clo-w {
+  width: 33%
+}
+.detailbottom .star {
+  margin-left: 10rpx;
+  height: 40rpx;
+  width: 40rpx;
+}
+.rep-img-box{
+    display: flex;
+    flex-direction: column;
+    padding: 10rpx 20rpx;
+    margin: 15rpx 25rpx;
+    background: #fff;
+    border-radius: 5rpx;
+}
+.item-imgs {
+    display: inline-block;
+    flex-wrap: wrap;
+    height: auto; 
+    /* padding: 20rpx 0; */
+    flex-direction: row;
+}
+/*维修图片大小  */
+.rep-img-box image {
+  width: 150rpx;
+  height: 150rpx;
+  margin: 5rpx
+}
+ /* .detailbottom .layoutstar {
+  padding-left: 10rpx;
+  display: flex;
+  flex-direction: row;
+}  */
+.margin-bot{
+    margin: 15rpx 25rpx;
+    padding: 10rpx 20rpx;
+    background: #fff;
+    border-radius: 5rpx;
+}
+.text-col{
+    color: #666;
+    display: inline-block;
+    width: 180rpx;
+}
+.aftertext{
+  /* color: #d4d4d4; */
+  margin-right: 20rpx
+}
+.detailbottom {
+  display: flex;
+  flex-direction: column;
+  padding: 10rpx 20rpx;
+  background: #fff;
+  margin: 15rpx 25rpx;
+}
+.detailbottom image{
+  width: 150rpx;
+  height: 150rpx;
+}
+.detailcenter {
+    display: flex;
+    flex-direction: column;
+    padding: 10rpx 20rpx;
+    margin: 15rpx 25rpx;
+    border-radius: 5rpx;
+    overflow: hidden;
+    flex-wrap: wrap;
+    background: #fff;
+}
+.comrow {
+  display: flex;
+  flex-direction: row; 
+  /* justify-content: space-between;  */
+  line-height: 60rpx;
+  flex-wrap: wrap
+}
+.detailcenters {
+    background: #fff;
+    margin:15rpx 25rpx;
+    /* padding: 0 20rpx; */
+}

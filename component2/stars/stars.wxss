@@ -1,0 +1,20 @@
+/* component2/stars/stars.wxss */
+.rankcontauber{  
+  display: flex;  
+  flex-direction: row;  
+}  
+.rankstars{  
+  display: flex;  
+  flex-direction: row;  
+  height: 25rpx;  
+  margin-right: 6rpx;  
+  margin-top: 12rpx;  
+}  
+.rankstars image{  
+  padding-left: 3rpx;  
+  height: 25rpx;  
+  width: 25rpx;  
+}  
+.rankscore{  
+  color: #4A6141  
+}  

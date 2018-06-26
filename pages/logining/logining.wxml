@@ -1,0 +1,57 @@
+<!--pages/logining/logining.wxml-->
+<view class="page__bd">
+  <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{errorMsg}}</view>
+  <!-- <view style="height: {{windowHeight}}px; width: {{windowWidth}}px;" class="back_img">
+  </view> -->
+    <image src="../../images/code_bg@2x.png" style="height: {{windowHeight}}px; width: {{windowWidth}}px;" class="back_img" mode='aspectFill'></image> 
+   <!-- <view style="height: {{windowHeight}}px; width: {{windowWidth}}px;" class="back_img" mode='aspectFill'></view> -->
+  <view style="position:absolute;top:{{windowHeight * 0.06}}px;">
+    <image src="../../images/logo_register@2x.png" style="width: {{windowWidth * 0.25}}px;height:{{windowWidth * 0.25}}px; margin-left:{{windowWidth * 0.5 - 45}}px;border-radius:{{windowWidth * 0.2}}px;"></image>
+  </view>
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="login_info" style="top:{{windowHeight * 0.35}}px;width: {{windowWidth * 0.92}}px;">
+      <view class="weui-cells weui-cells_after-title login_form">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="login-label">账号</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input login-input" placeholder="请输入账号" placeholder-style='color:rgba(255,255,255,0.5)' id="username" type="number" maxlength="11" focus="true" name="username" value="{{account.username}}" bindtap="inputFocus"/>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="login-label">密码</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input login-input" placeholder="请输入密码" placeholder-style='color:rgba(255,255,255,0.5)' type="password" id="password" maxlength="32" focus="true" name="password" value="{{account.password}}" bindtap="inputFocus"/>
+          </view>
+        </view>
+        <!--
+        <view class="weui-cell weui-cell_input weui-cell_vcode">
+          <view class="weui-cell__hd">
+            <view class="weui-label">验证码</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入验证码" type="text" maxlength="4" name="vcode"/>
+          </view>
+          <view class="weui-cell__ft">
+            <image class="weui-vcode-img" src="{{vcodeImg}}" style="width: 108px"></image>
+          </view>
+        </view>
+        -->
+         <!-- <view class="weui-btn-area">
+          <button class="login-btn" formType="submit" bindtap='bindtaplogin'>登录</button>
+        </view>  -->
+        <!-- <view class="regist"><navigator url="../redister/redister">注册账号</navigator>|<navigator>忘记密码？</navigator></view> -->
+        <!-- <navigator url="../redister/redister">
+          <text class="register_text">还没有账号，点击注册吧</text>
+        </navigator> -->
+      </view>
+      <view class="weui-cells__tips"></view>
+    </view>
+      <view class="weui-btn-area">
+        <button class="login-btn" formType="submit" bindtap='bindtaplogin'>登 录</button>
+      </view> 
+  </form>
+</view>

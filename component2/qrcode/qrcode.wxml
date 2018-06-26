@@ -1,0 +1,5 @@
+<!--component2/qrcode/qrcode.wxml-->
+<view class='code' hidden='{{codeHidden}}'  bindtap='codecancle'>
+    <canvas style="width: 400rpx;height: 400rpx;background:#f1f1f1;" canvas-id="qrcode" class='qcorde'/>
+</view>
+

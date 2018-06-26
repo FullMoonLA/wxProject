@@ -1,0 +1,16 @@
+/* component2/qrcode/qrcode.wxss */
+.code{
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.6);  
+}
+.qcorde{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}

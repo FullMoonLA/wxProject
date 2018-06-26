@@ -1,0 +1,23 @@
+<!--component2/repmodel/repmodel.wxml-->
+<!-- <template name="modalcontent"> -->
+   <view hidden='{{dialogHidden}}'>  
+    <view class='mask_layer' />  
+     <!-- bindtap='cancleBtn' -->
+    <view class='modal_box'>  
+      <view class="title">维修说明</view>  
+      <view class='content'>  
+        <view class='modal-title'>紧急维修：接到报修通知后2小时内到修，6小时完修</view>
+        <view class='md-title-cont'>维修范围：装潢水电跳电、淹水、火警等事故，空调室外机掉落；招牌脱落，冷冻设备温升，自动门无法开启，监控及UPS设备故障</view>
+        <view class='modal-title'>限时维修：接到报修通知后4小时内到修，12销售完修</view>
+        <view class='md-title-cont'>完修范围：装潢水电漏水、冷冻设备维修，空调温升，FF设备运行故障</view>
+        <view class='modal-title'>一级维修：接到报修通知后24小时内到修，48小时完修</view>
+        <view class='md-title-cont'>维修范围：装潢水电五金类维修，净水器故障</view>
+        <view class='modal-title'>二级维修：接到报修通知后48小时内到修，72小时完修</view>
+        <view class='md-title-cont'>维修范围：照片灯管不亮，货架烤漆掉漆</view>
+      </view>  
+      <view class='btn'>  
+        <view bindtap='determineBtn' class='cancel'>朕已阅</view>  
+      </view>  
+    </view>  
+  </view>   
+<!-- </template> -->

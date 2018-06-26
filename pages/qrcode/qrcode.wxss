@@ -1,0 +1,18 @@
+/* pages/qrcode/qrcode.wxss */
+.code{
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  /* margin: 50rpx; */
+  height: 100%;
+  width: 100%;
+  /* overflow: hidden */
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.6);  
+}
+.qcorde{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}

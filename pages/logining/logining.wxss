@@ -1,0 +1,61 @@
+/* pages/logining/logining.wxss */
+.back_img{
+  background-image:no-repeat;
+  background-size:100%;
+  background-color: #28B98F;
+  /* -webkit-filter: blur(10px); 
+  -moz-filter: blur(10px);
+  -ms-filter: blur(10px);    
+  filter: blur(10px);  */
+  z-index:0;
+  position:relative;
+}
+.login_info{
+  z-index: 999;
+  position:absolute;
+}
+.login-btn{
+  background-color: #fff;
+  color: #28B98F;
+  height: 70rpx;
+  width: 84%;
+  line-height: 70rpx;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+  z-index: 999;
+  position: absolute;
+  top: 400px;
+  left: 8%;
+}
+.login-label{
+  color: #fff;
+  margin-right: 30rpx;
+  font-size: 28rpx
+}
+.login-input{
+  font-size: 28rpx;
+  color: #fff;
+  resize: none;
+  box-sizing: border-box;
+}
+.login_form{
+  border-radius:5px;
+  margin-left:8%;
+  background-color: rgba(255,255,255,0.2);
+}
+.register_text{
+  color:darkgray;
+}
+.regist {
+  font-size: 28rpx;
+  /* background: #fff; */
+  /* border-top: 1px solid #ccc; */
+  /* border-bottom: 1px solid #ccc; */
+  line-height: 80rpx;
+  text-align: right;
+  color: #28B98F;
+}
+.regist navigator {
+  display: inline-block;
+  padding: 0 2%;
+}

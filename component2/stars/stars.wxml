@@ -1,0 +1,12 @@
+<!--component2/stars/stars.wxml-->
+<template name="starsTpl">  
+    <view class="rankcontauber">    
+      <view class="rankstars">  
+        <view wx:for="{{[1,2,3,4,5]}}" wx:for-item="item">
+          <image wx:if="{{item > starScore+1}}" src="../../images/star_icon2.png"></image>
+           <image wx:else="{{item <= starScore}}" src="../../images/star_icon.png"></image>
+        </view>
+        </view>  
+        <text class="rankscore">{{starScore}}</text>  
+      </view>  
+</template>  

@@ -1,0 +1,159 @@
+<!--pages/aftersalsedetail/aftersaledetail.wxml-->
+<!-- <import src="../../component2/stars/stars.wxml"/> -->
+<view class='contain'>
+  <view class='detailtop'>
+    <text>编号：{{details.orderNum}}</text>
+    <label class='stu'>
+      <block wx:if="{{details.status == 0}}">
+        待服务
+      </block>
+      <block wx:if="{{details.status == 1}}">
+        已派单
+      </block>
+    </label>
+  </view>
+  <import src="../../component2/toastTest/toastTest.wxml"/>
+  <template is="toast" data="{{ ..._toast_ }}"/>
+  <view class='navbar'>
+    <text wx:for="{{navbar}}" data-idx='{{index}}' class="item {{currentTab==index? 'active' : ''}}" wx:key='unique' bindtap='navbarTap'>{{item}}</text>
+  </view>
+  <view hidden="{{currentTab!==0}}" bindtap="clearinform">
+    <view class='detailcenter'>
+      <!-- <view class='comrow'> -->
+        <!-- <view class='comrow'><view class="text-col">门店名称：</view>{{details.storeName}}</view>
+        <view class='comrow'><view class="text-col">门店类型：</view>{{details.storeType}}</view> -->
+      <!-- </view> -->
+      <!-- <view class='comrow-1'><view class="text-col">门店属性：</view>{{details.scaleName}}</view>
+      <view class='comrow-1'><view class="text-col">地址：</view>{{details.city}}{{details.district}}{{details.address}}</view> -->
+      <!-- <view class='comrow'> -->
+        <view class='comrow'><view class="text-col">维修类型：</view>{{details.repairs}}</view>
+        <view class='comrow'><view class="text-col">维修项目：</view>{{details.repairChild}}</view>
+      <!-- </view> -->
+      <view class='comrow'>
+        <view><view class="text-col">报修时间：</view>{{details.createTime}}</view>
+        <view><view class="text-col">报修时效：</view>{{details.level}}</view>
+        <view class='comrow'><view class="text-col">维修说明：</view>{{details.description}}</view>
+      </view>
+    
+      <!-- <view class='detailtop'>
+        <text>派单工人：{{seruser}}</text>
+        <text>电话：{{serphone}}</text>
+      </view> -->
+    </view>
+    <view class='margin-bot'> 
+        <view class='comrow'><view class="text-col">报修店员：</view>{{details.cusUserName}}</view>
+        <view class='comrow'><view class="text-col">联系电话：</view>{{details.cusUserPhone}}</view>
+        
+    </view> 
+    <view class='rep-img-box'>
+      <view class="text-col">维修前图片：</view> 
+      <view class="item-imgs">
+        <block wx:for="{{proofImage}}"  wx:for-item="item" wx:key = "*this">
+            <image src='{{item}}' mode='aspectfill' bindtap='previewImg'  data-src="{{item}}" data-index="{{index}}"></image>
+        </block>
+      </view>
+    </view>
+    <!-- <view class='layoutrow'>维修后图片
+      <image src='../../images/maogo.png{{details.targetImage}}' mode='aspectfill'></image> -->
+       
+      
+        <block wx:if="{{details.status == 0}}">
+        <!-- <view class='cloum margin-bot'>
+</view> -->
+        </block>
+
+        <block wx:else> 
+            <view class='cloum margin-bot'>
+                <view><view class="text-col">维修工人：</view>{{details.serUserName}}</view>
+                <view><view class="text-col">联系电话：</view>{{details.serUserPhone}}</view>
+            </view>
+        </block> 
+      
+    <!-- </view> -->
+  </view>
+
+  <view hidden="{{currentTab!==1}}" bindtap="clearinform">
+    <view class='detailcenter'>
+      <!-- <view class='comrow'> -->
+        <view class='comrow'><text class='text-col'>维修原因：</text>{{details.faultName}}</view>
+        <view class='comrow'><text class='text-col'>质保期：</text>{{details.pertainName}}</view>
+      <!-- </view> -->
+      <view><text class='text-col'>完成时间：</text>{{details.endTime}}</view>
+      <view><text class='text-col'>维修方案：</text>{{details.solution}}</view>
+      <view><text class='text-col'>工人费用：</text>{{details.totalPrice}}元</view>      
+    </view>
+    <view class='detailcenters'>
+      <view class='layoutsp-ad'>
+        <text class='clo-w text-col'>名称</text>
+        <text class='clo-w text-col'>数量</text>
+        <text class='clo-w text-col'>价格(元)</text>
+      </view>
+      <view class='layoutsp-ad' wx:for='{{detailsList}}' wx:key="{{item.id}}">
+        <text class='clo-w'>{{item.item}}</text>
+        <text class='clo-w'>{{item.amount}}</text>
+        <text class='clo-w'>{{item.unitPrice}}</text>
+      </view>
+    </view>
+    <view class='detailbottom'>
+      <text class='text-col'>维修后图片：</text> 
+      <image src='{{details.targetImage}}' mode='aspectfill' bindtap='previewImg2'  data-src="{{details.targetImage}}"></image>
+    </view>
+    <!-- 用户评论，根据后台显示 -->
+    <!-- <view bindtap=''  hidden='{{show}}'>
+      <block wx:if="{{details.status == 2}}" class='detailbottom'>
+      </block>
+    </view> -->
+     <!-- <view bindtap=''  hidden='{{show}}' class='detailbot-box detailbottom'>
+      <block wx:if="{{details.status == 3}}" >
+        <view>
+            <text>用户评价:</text> -->
+            <!-- <template is="starsTpl"></template> -->
+          <!-- <view class="pingfen">
+            <block wx:for="{{item.pingfenpic}}" wx:key="{{item.id}}" wx:for-item="pingfen">
+              <image class="img" src="{{pingfen}}"></image>
+            </block>
+            <text data-pingfen="{{item.pingfen}}" >{{item.criticGrade}}</text>
+          </view> -->
+          <!-- <view hidden="{{five}}">
+            <image src='../../images/star_icon2.png' class='star'></image>
+            <image src='../../images/star_icon2.png' class='star'></image>
+            <image src='../../images/star_icon2.png' class='star'></image>
+            <image src='../../images/star_icon2.png' class='star'></image>
+            <image src='../../images/star_icon2.png' class='star'></image>  
+          </view>
+          <view hidden="{{four}}">
+            <image src='../../images/star_icon2.png' class='star'></image>
+            <image src='../../images/star_icon2.png' class='star'></image>
+            <image src='../../images/star_icon2.png' class='star'></image>
+            <image src='../../images/star_icon2.png' class='star'></image>
+            <image src='../../images/star_icon.png' class='star'></image>  
+          </view>
+          <view hidden="{{three}}">
+            <image src='../../images/star_icon2.png' class='star'></image>
+            <image src='../../images/star_icon2.png' class='star'></image>
+            <image src='../../images/star_icon2.png' class='star'></image>
+            <image src='../../images/star_icon.png' class='star'></image>
+            <image src='../../images/star_icon.png' class='star'></image>  
+          </view>
+          <view hidden="{{two}}">
+            <image src='../../images/star_icon2.png' class='star'></image>
+            <image src='../../images/star_icon2.png' class='star'></image>
+            <image src='../../images/star_icon.png' class='star'></image>
+            <image src='../../images/star_icon.png' class='star'></image>
+            <image src='../../images/star_icon.png' class='star'></image>  
+          </view>
+          <view hidden="{{one}}">
+            <image src='../../images/star_icon2.png' class='star'></image>
+            <image src='../../images/star_icon.png' class='star'></image>
+            <image src='../../images/star_icon.png' class='star'></image>
+            <image src='../../images/star_icon.png' class='star'></image>
+            <image src='../../images/star_icon.png' class='star'></image>  
+          </view>
+          <view hidden="{{zero}}">无评价</view>
+        </view>
+        <view><text class='aftertext'>评分:</text>{{details.criticGrade}}.0分</view>
+        <view hidden="{{details.criticContent == ''}}"><text class='aftertext'>评价内容:</text>{{details.criticContent}}</view>
+      </block>
+    </view>  -->
+  </view>
+</view>

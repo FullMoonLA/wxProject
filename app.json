@@ -1,0 +1,50 @@
+{
+    "pages": [
+        "pages/maintain/maintain",
+        "pages/home/home",
+        "component2/repmodel/repmodel",
+        "pages/checkcomment/checkcomment",
+        "pages/logining/logining",
+        "pages/urgent/urgent",
+        "pages/comment/comment",
+        "pages/aftersalserepair/aftersalserepair",
+        "component2/stars/stars",
+        "pages/index/index",
+        "pages/aftersaledetail/aftersaledetail",
+        "pages/urgentdetail/urgentdetail",
+        "pages/redister/redister",
+        "pages/logs/logs",
+        "pages/qrcode/qrcode",
+        "component2/model/model",
+        "component2/tabbar/tabbar",
+        "component2/qrcode/qrcode",
+        "pages/storereprecode/storereprecode"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#FFF",
+        "navigationBarTitleText": "",
+        "navigationBarTextStyle": "black",
+        "enablePullDownRefresh": true
+    },
+    "tabBar": {
+        "color": "#272636",
+        "selectedColor": "#28B98F",
+        "backgroundColor": "#fff",
+        "borderStyle": "#e6e6e6",
+        "list": [
+            {
+                "pagePath": "pages/maintain/maintain",
+                "iconPath": "images/jj2_x50.png",
+                "selectedIconPath": "images/jj_x50.png",
+                "text": "报修"
+            },
+            {
+                "pagePath": "pages/home/home",
+                "iconPath": "images/geren2_x50.png",
+                "selectedIconPath": "images/geren_x50.png",
+                "text": "个人中心"
+            }
+        ]
+    }
+}

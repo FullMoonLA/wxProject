@@ -1,0 +1,169 @@
+<view class='navbar'>
+  <text wx:for="{{navbar}}" data-idx='{{index}}' class="item {{currentTab==index? 'active' : ''}}" wx:key='unique' bindtap='navbarTap'>{{item}}</text>
+</view>
+
+<!-- 弹出窗口 -->
+<import src="../../component2/toastTest/toastTest.wxml"/>
+<template is="toast" data="{{ ..._toast_ }}" style="z-index:99999 !important"/>
+
+<view hidden="{{currentTab!==0}}" bindtap="clearinform" class='conten'>
+  <form bindsubmit="formSubmit" bindreset="formReset" class='formstyle'>
+    <view class="repair-page">
+      <view class='content-line'>
+        <view  class='lefttext'>
+          <label>联系方式</label>
+        </view>
+        <view class="right">
+          <input class='rightinput' name="phone" type="number" value='{{phone}}' disabled='true'></input>
+        </view>
+      </view>
+      <view class='content-line'>
+        <view class='lefttext'>
+          <label>省市区</label>
+        </view>
+         <view class="right">
+          <input class='rightinput' name="location" value='{{province}}{{city}}{{district}}' disabled='true'></input>
+        </view> 
+      </view>
+      <view class='content-line'>
+        <view class='lefttext'>
+          <label>详细地址</label>
+        </view>
+        <view class="right" bindtap="chooseLocation">
+          <input class='rightinput' value="{{location.name}}" name="address" disabled='true'></input>
+          <image class='location'  src='../../images/icon_location.png'></image>
+        </view>
+      </view>
+      <view class='content-line'>
+        <view class='lefttext'>
+          <label>维修费用</label>
+        </view>
+        <view class="right">
+          <input class='rightinput' type="digit" name="price" value='{{price}}' placeholder='请输入您的预算' placeholder-style='font-size=24rpx;color:#D0D0D0;'></input>元
+        </view>
+      </view>
+    </view>
+    <view style='background:#f2f2f2;height:20rpx;'></view>
+    <view class='repair-explain'>
+      <view class='content-text'>维修说明：</view>
+      <view class=''>
+      <textarea placeholder='输入维修的原因有助于工人迅速接单哦' placeholder-style='font-size=26rpx;color:#D0D0D0;'  value='{{descriptions}}' name='descriptions' hidden='{{currentTab!==0}}' class='directions-content'></textarea>
+      </view>
+      <!-- -----------------图片上传预览------------------------- -->
+      <view class='image-view'> 
+        <view class='image-up' wx:for="{{imgs}}" wx:for-item="item" wx:key="*this">
+          <image  class="image-i" src="{{item}}" mode="aspectFill" bindtap="previewImg" data-index="{{index}}" name="description"></image>
+          <!-- 删除图片图标X -->
+          <image class="delete-btn" data-index="{{index}}" catchtap="deleteImg" src="../../images/delete40x40.png"></image>
+        </view> 
+          <!-- 上传图片占位图 -->
+        <image class="image-upload" bindtap="chooseImg" src="../../images/add_x134.png" mode="aspectFill"></image>
+      </view>
+       <!-- ------------------------------------------ -->
+    </view>
+    <view class='submit-view'>
+    <button class='submit-btn' bindtap="changeHidden" formType="submit" disabled='{{disablesub}}'>提 交</button>
+  </view>
+  </form> 
+</view>
+
+  <!-- Tabbar----售后维修 -->
+<view hidden="{{currentTab!==1}}" bindtap="clearinform" class='repform'>
+  <form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='scanqcode'>
+    <view class='scanbotm' bindtap='repscanqcode'><image src='../../images/icon_Scan@2x.png'></image>点我扫描设备上的二维码可快速报修哦</view>
+    <view class='reqnum' hidden='{{hidequ}}'>设备编码：{{showequ}}</view>
+  </view>
+  <view class='zz'></view>
+    <view class='form-content'>
+      <view>
+        <view class='content-line'>
+          <view class='lefttext'>
+            <label>维修类型</label>
+          </view>
+          <view class="right">
+            <view class="pickline" bindtap='Picker1'>
+              <picker bindchange='bindCasPickerChange_1' disabled='{{pickable}}' value="{{casIndex}}" range-key="repairsName" range="{{casArray}}">
+                  <view class="pickright">{{casArray[casIndex].repairsName}}<text hidden='{{hidequ ? true :false}}'>{{casIndex}}</text></view>
+                  <image class="dropdrown" src='../../images/xiala_x22.png' bindtap='Picker1'></image>
+              </picker>
+            </view>
+          </view>
+
+        </view>
+        <view class='content-line'>
+          <view class='lefttext'>
+            <label>维修项目</label>
+          </view>
+          <view class="right">
+            <view class="pickline" bindtap='Picker2'>
+              <picker bindchange='bindCasPickerChange_2'  value="{{casIndex2}}" range-key="repChildName" range="{{casArray2}}" disabled="{{disable}}">
+                <view class='pickright'>{{casArray2[casIndex2].repChildName}}<text hidden='{{hidequ ? true :false}}'>{{casIndex2}}</text></view> 
+                <image class='dropdrown' src='../../images/xiala_x22.png' bindtap='Picker2'></image>
+              </picker>
+            </view>
+          </view>
+        </view>
+        <view class='content-line'>
+          <view class='lefttext'>
+            <label>报修时效</label>
+          </view>
+          <view class="right">
+            <view class="pickline"  catchtap='Picker3'>
+              <picker bindchange='bindCasPickerChange_3' value="{{casIndex3}}" range-key="levelName" range="{{casArray3}}" disabled="{{disable_1}}">
+                <text class='pickright' value="{{casIndex3}}">{{casArray3[casIndex3].levelName}}</text>
+                <!-- Picker3 -->
+              </picker>
+            </view>
+          </view>
+          <image class='explain' src='../../images/icon_explain.png' catchtap='showdialog'></image>
+          <dialog id='dialog'  bind:determineevent="onMyEvent" dialog-hidden="{{isHidden}}"></dialog>
+        </view>
+        <view style='background:#EDEDED;height:20rpx;'></view>
+        <view>
+          <view class='content-line'>
+            <view class='lefttext'>
+              <label>联系电话</label>
+            </view>
+            <view class="right">
+              <input class='rightinput' name="phone" type="number" value='{{phone}}' disabled='true'></input>
+            </view>
+          </view>
+          <view class='content-line'>
+            <view class='lefttext'>
+              <label>维修地址</label>
+            </view>
+            <view class="right">
+              <input class='rightinput' value='{{repprovince}}{{repcity}}{{repdistrict}}' disabled='true'></input>
+
+            </view>
+          </view>
+          <view class='content-line'>
+            <view class='lefttext'>
+              <label>详细地址</label>
+            </view>
+            <view class="right">
+              <input class='rightinput' value='{{repaddress}}' name="repaddress" disabled='true'></input>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view style='background:#EDEDED;height:20rpx;'></view>
+      <view class='repair-explain'>
+        <view class='content-text'>维修说明：</view>
+        <view class=''>
+          <textarea placeholder='输入维修的原因有助于工人迅速接单哦' placeholder-style='font-size=26rpx;color:#D2D2D2;'   class='directions-content' value='{{repdescripts}}' name='repdescripts' hidden="{{currentTab!==1}}"></textarea>
+        </view>
+        <view class='image-view'> 
+          <view class='image-up' wx:for="{{imgs}}" wx:for-item="item" wx:key="*this">
+            <image  class="image-i" src="{{item}}" mode="aspectFill" bindtap="previewImg" data-index="{{index}}"></image>
+            <image class="delete-btn" data-index="{{index}}" catchtap="deleteImg" src="../../images/delete40x40.png"></image>
+          </view> 
+            <image class="image-upload" bindtap="chooseImg" src="../../images/add_x134.png" mode="aspectFill"></image>
+        </view>
+        
+      </view>
+    </view>
+      <button class='submit-btn' bindtap="changeHidden"  formType="submit" disabled='{{disablesub}}'>提 交</button>
+  </form> 
+</view>

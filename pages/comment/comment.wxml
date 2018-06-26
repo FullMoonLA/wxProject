@@ -1,0 +1,49 @@
+<!--pages/comment/comment.wxml-->
+<!-- 弹出窗口 -->
+<import src="../../component2/toastTest/toastTest.wxml"/>
+<template is="toast" data="{{ ..._toast_ }}"/>
+<text class='com-title'>维修已完成</text>
+<view class='com-tips'>请评价一下为您维修的工程师吧</view>
+<view class='line-css'></view>
+<view class='com-Text'>评价工程师</view>
+<!--星星评价-->
+<form bindsubmit='formSubmit'>
+  <view class='content'>
+    <view class="zan-font-16 my-ib" bindtap="myStarChoose">
+      <block wx:for="{{starMap}}">
+        <view wx:if="{{star>=index+1}}" style="padding-right: .5em" class="zan-c-green" data-star="{{index+1}}">
+        <!-- <image src='../../images/star_icon2.png' class='starScore'></image>  -->
+         ★ 
+        </view>
+        <view wx:if="{{star<index+1}}" style="padding-right: .5em" class="zan-c-gray-dark" data-star="{{index+1}}">
+        <!-- <image src='../../images/star_icon.png' class='starScore'></image> -->
+         ☆ 
+        </view>
+      </block>
+    </view>
+    <!--★-->
+    <!-- <text class="score"> -->
+    <!-- {{starMap[star-1]}} -->
+    <!-- <block wx:if="{{starMap[star-1] == 0}}">
+                  
+    </block>
+    <block wx:elif="{{starMap[star-1] == 1}}">
+                  1.0分
+    </block>
+    <block wx:elif="{{starMap[star-1] == 2}}">
+                  2.0分
+    </block>
+    <block wx:elif="{{starMap[star-1] == 3}}">
+                  3.0分
+    </block>
+    <block wx:elif="{{starMap[star-1] == 4}}">
+                  4.0分
+    </block>
+    <block wx:elif="{{starMap[star-1] == 5}}">
+                  5.0分
+    </block>
+    </text> -->
+  </view>
+  <textarea placeholder='其他建议或意见' class='com-content' placeholder-style='color:#ccc' name="content"></textarea>
+  <button class='com-submit' formType="submit">提交评价</button>
+</form>

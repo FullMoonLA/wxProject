@@ -1,0 +1,77 @@
+<!--pages/home/home.wxml-->
+<!--  
+变量说明：  
+windowHeight ：设备的窗口的高度  
+windowWidth ： 设备的窗口的宽度  
+actionSheetHidden ： 组件是否显示  
+actionSheetItems ：组件菜单项  
+-->  
+
+<import src="../../component2/toastTest/toastTest.wxml"/>
+<template is="toast" data="{{ ..._toast_ }}"/>
+<!-- <view class="page__bd" style="height: {{windowHeight * 0.4}}px; width: {{windowWidth}}px;">  -->
+    <view class='header-top-img'>
+    <view class='page__bd'>
+        <image src="{{userImg}}" class='userimages' bindtap="clickImage"/> 
+    </view>
+    <block hidden="{{loginstatu != null ? false : true}}">{{loginstatu}}</block>
+    <block wx:if="{{loginstatu == null}}">
+        <view class="home-user-name">
+        <navigator url="../logining/logining" redirect="true">点击登录<label class='left-img'>></label></navigator>
+        </view>
+    </block>
+        <!-- <view style="font-size: 13px;color: #888888;">{{phone}}         </view>    --> 
+    </view>
+
+    <view class="login-cell weui-cell weui-cell_access ug-top" bindtap="bindurgent">
+    <view class="weui-cell__bd">  
+        <view style="display: inline-block; vertical-align: middle">普通维修</view>  
+    </view>  
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>   
+    </view>
+
+    <!-- <view class="weui-cells weui-cells_after-title me-info"  
+    style="top:{{windowHeight * 0.4}}px;">   -->
+        <!-- <view class="weui-cell">  
+            <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">   -->
+                <!-- <image src="{{userImg}}" style="width: 50px; height: 50px; display: block;border-radius:25px;" bindtap="clickImage"/>  -->
+            <!-- </view>  
+
+        </view>   -->
+        <!-- <view class="weui-cell weui-cell_access">  
+            <view class="weui-cell__bd">  
+                <view style="display: inline-block; vertical-align: middle">个人资料</view>  
+            </view>  
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>  
+        </view>   -->
+                 <!-- <view class="weui-badge" style="margin-left: 5px;">{{urgentmsg}}8</view>    -->
+
+        <view class="login-cell weui-cell weui-cell_access at_botm" bindtap="bindaftersale">  
+            <view class="weui-cell__bd">  
+                <view style="display: inline-block; vertical-align: middle">售后维修</view>
+                <!-- <view class="weui-badge" style="margin-left: 5px;">{{aftermsg}}8</view>   -->
+            </view>  
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>  
+        </view>
+
+        <view class="login-cell weui-cell weui-cell_access ug-top" bindtap="reprecord">
+            <view class="weui-cell__bd">  
+                <view style="display: inline-block; vertical-align: middle">报修记录</view>  
+            </view>  
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>   
+        </view>
+
+        <view class="login-botcell weui-cell weui-cell_access" bindtap='signout'>  
+            <view class="weui-cell__bd">  
+                <view style="display: inline-block; vertical-align: middle">退出登录</view>  
+            </view>  
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>  
+        </view>   
+    <!-- </view>   -->
+    <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetbindchange">  
+        <block wx:for="{{actionSheetItems}}" wx:key="unique">  
+            <action-sheet-item bindtap="{{item.bindtap}}">{{item.txt}}</action-sheet-item>  
+        </block>  
+        <action-sheet-cancel class="cancel">取消</action-sheet-cancel>  
+    </action-sheet>  
+<!-- </view>   -->

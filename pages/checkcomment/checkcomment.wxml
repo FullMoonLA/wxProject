@@ -1,0 +1,64 @@
+<!--pages/checkcomment/checkcomment.wxml-->
+<view class='pages'>
+  <view class='topuser'>
+    <image src='{{userView}}'></image>
+    <!-- https://boss-dream.oss-cn-shanghai.aliyuncs.com/ -->
+    <view>{{infocomment.userView[0]}}</view>
+  </view>
+ 
+  <view class='com-content'>
+    <view  class='starlist'>{{infocomment.star}}
+      <view>
+          <!-- <template is="starsTpl"></template> -->
+        <!-- <view class="pingfen">
+          <block wx:for="{{item.pingfenpic}}" wx:key="{{item.id}}" wx:for-item="pingfen">
+            <image class="img" src="{{pingfen}}"></image>
+          </block>
+          <text data-pingfen="{{item.pingfen}}" >{{item.criticGrade}}</text>
+        </view> -->
+        <view hidden="{{five}}">
+          <image src='../../images/star_icon2.png' class='star'></image>
+          <image src='../../images/star_icon2.png' class='star'></image>
+          <image src='../../images/star_icon2.png' class='star'></image>
+          <image src='../../images/star_icon2.png' class='star'></image>
+          <image src='../../images/star_icon2.png' class='star'></image>  
+        </view>
+        <view hidden="{{four}}">
+          <image src='../../images/star_icon2.png' class='star'></image>
+          <image src='../../images/star_icon2.png' class='star'></image>
+          <image src='../../images/star_icon2.png' class='star'></image>
+          <image src='../../images/star_icon2.png' class='star'></image>
+          <image src='../../images/star_icon.png' class='star'></image>  
+        </view>
+        <view hidden="{{three}}">
+          <image src='../../images/star_icon2.png' class='star'></image>
+          <image src='../../images/star_icon2.png' class='star'></image>
+          <image src='../../images/star_icon2.png' class='star'></image>
+          <image src='../../images/star_icon.png' class='star'></image>
+          <image src='../../images/star_icon.png' class='star'></image>  
+        </view>
+        <view hidden="{{two}}">
+          <image src='../../images/star_icon2.png' class='star'></image>
+          <image src='../../images/star_icon2.png' class='star'></image>
+          <image src='../../images/star_icon.png' class='star'></image>
+          <image src='../../images/star_icon.png' class='star'></image>
+          <image src='../../images/star_icon.png' class='star'></image>  
+        </view>
+        <view hidden="{{one}}">
+          <image src='../../images/star_icon2.png' class='star'></image>
+          <image src='../../images/star_icon.png' class='star'></image>
+          <image src='../../images/star_icon.png' class='star'></image>
+          <image src='../../images/star_icon.png' class='star'></image>
+          <image src='../../images/star_icon.png' class='star'></image>  
+        </view>
+        <view hidden="{{zero}}">无评价</view>
+        
+      </view> 
+      <view class='aftertext'>{{infocomment.grade}}.0分</view>   
+    </view>
+    <text class='content'>评价内容:</text>
+    <textarea hidden="{{infocomment.content == ''}}" placeholder='{{infocomment.content}}' class='place'></textarea>
+    <view class='time'>{{infocomment.criticTime}}</view>
+  </view>
+<!-- <textarea disabled='true' value='{{infocomment.repdescriptions}}'></textarea> -->
+</view>

@@ -1,0 +1,146 @@
+<!--tab_top-->  
+<view class="swiper-tab">  
+  <view class="swiper-tab-list {{currentTab==0 ? 'active' : ''}}" data-current="0" bindtap="swichNav">待服务 
+  </view>  
+  <view class="swiper-tab-list {{currentTab==1 ? 'active' : ''}}" data-current="1" bindtap="swichNav">待确认 
+  </view>  
+  <view class="swiper-tab-list {{currentTab==2 ? 'active' : ''}}" data-current="2" bindtap="swichNav">已完成  
+  </view>  
+</view>  
+  <import src="../../component2/toastTest/toastTest.wxml"/>
+  <template is="toast" data="{{ ..._toast_ }}"/>
+<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 51}}px" bindchange="bindChange">  
+  <!--待服务 -->  
+  <swiper-item>  
+    <scroll-view class="hot-box" scroll-y="true" upper-threshold="50" lower-threshold="100" bindscrolltolower="scrolltolower">  
+      <!-- 列表 -->  
+      <view class="themes-list">
+        <view class="themes-list-box" wx:for="{{datalists}}" wx:key="{{item.id}}"> 
+          <view bindtap='box_detail'  data-id="{{item.id}}"  data-orderId="{{item.orderId}}">
+          <text hidden='{{true}}' value="">{{item.orderId}}</text>
+            <view class="com-topbox">
+              <view>维修费用：<label class="repair-money">{{item.totalPrice}}</label>元</view>
+                <!-- <label class="topbox-rt">
+                <block wx:if="{{item.status == 0}}">
+                  待服务
+                </block>
+                <block wx:if="{{item.status == 1}}">
+                  已派单
+                </block>
+                </label> -->
+              </view>
+            <view class="com-centerbox">
+              <image src="{{item.proofImage}}" class="com-lf-img"></image>
+              <view class="com-rt-box">
+                <view>报修编号：{{item.orderNum}}</view>
+                <view>报修时间:{{item.createTime}}</view>
+                <view>报修时效：{{item.levelName}}</view>
+                <view>维修说明：{{item.description}}</view>
+              </view>
+            </view>
+          </view> 
+          <view class="bottom">
+            <button class="btom-btn-can" data-id="{{item.id}}"  data-orderId="{{item.orderId}}" bindtap="paycancel">取消订单</button>
+            <block wx:if="{{item.arrivalTime == 0}}">
+              <button class="btom-btn" data-id="{{item.id}}" data-orderId="{{item.orderId}}" data-serverId="{{item.serverId}}" data-arrivalTime='{{item.arrivalTime}}' bindtap="payorder">签到二维码</button>
+            </block>
+            <block wx:if="{{item.arrivalTime != 0}}">
+              <button class="btom-btn" data-id="{{item.id}}" data-orderId="{{item.orderId}}" data-serverId="{{item.serverId}}" data-arrivalTime='{{item.arrivalTime}}' bindtap="payorder">完修二维码</button>
+            </block>
+          </view>
+          <!-- <view class="themes-list-main">  
+            <view class="themes-list-name">{{item}}</view>  
+          </view>   -->
+        </view>      
+      </view>  
+        <view class="loading" hidden="{{!listLoading}}"><image class='iconloading' src='../../images/icon2-loading.gif'></image> 正在载入更多...</view>  
+      <view class="loading complete" hidden="{{!listLoadingComplete}}">已加载全部</view> 
+    </scroll-view>  
+  </swiper-item>  
+  
+  <!-- 待支付 -->  
+  <swiper-item>  
+    <scroll-view class="hot-box" scroll-y="true" upper-threshold="50" lower-threshold="100" bindscrolltolower="scrolltolower">  
+      <!-- 列表 -->  
+      <view class="themes-list">   
+        <view class="themes-list-box" wx:for="{{datalists}}" wx:key="{{item.id}}"> 
+          <view bindtap='box_detail'  data-id="{{item.id}}"  data-orderId="{{item.orderId}}">
+          <text hidden='{{true}}' value="">{{item.orderId}}</text>
+          <text hidden='{{true}}' value="">{{item.isMonthPay}}</text>
+            <view class="com-topbox">
+              <view>维修费用：<label class="repair-money">{{item.totalPrice}}</label>元</view>
+              <!-- <label class="topbox-rt">
+                <block wx:if="{{item.status == 2}}">
+                  待确认
+                </block>
+              </label> -->
+            </view>
+            <view class="com-centerbox">
+              <image src="{{item.proofImage}}" class="com-lf-img"></image>
+              <view class="com-rt-box">
+                <view>报修编号：{{item.orderNum}}</view>
+                <view>报修时间:{{item.createTime}}</view>
+                <view>报修时效：{{item.levelName}}</view>
+                <view>维修说明：{{item.description}}</view>
+              </view>
+            </view>
+          </view>
+          <view class="bottom2">
+            <button class="btom-btn" data-id="{{item.id}}" data-orderId="{{item.orderId}}" data-serverId="{{item.serverId}}"  data-isMonthPay='{{item.isMonthPay}}' bindtap='after_confirm'>确认订单</button>
+          </view> 
+          <!-- <view class="themes-list-main">  
+            <view class="themes-list-name">{{item}}</view>  
+          </view>   -->
+        </view>  
+      </view>
+        <view class="loading" hidden="{{!listLoading}}"><image class='iconloading' src='../../images/icon2-loading.gif'></image> 正在载入更多...</view>  
+      <view class="loading complete" hidden="{{!listLoadingComplete}}">已加载全部</view>   
+    </scroll-view>  
+  </swiper-item>  
+  
+  <!-- 已完成 -->  
+  <swiper-item>  
+    <scroll-view class="hot-box" scroll-y="true" upper-threshold="50" lower-threshold="100" bindscrolltolower="scrolltolower">   
+      <!-- 列表 -->  
+      <view class="themes-list">    
+        <view class="themes-list-box" wx:for="{{datalists}}" wx:key="{{item.id}}">  
+          <view bindtap='box_detail'  data-id="{{item.id}}"  data-orderId="{{item.orderId}}">
+          <text hidden='{{true}}' value="">{{item.orderId}}</text>
+            <view class="com-topbox">
+              <view>维修费用：<label class="repair-money">{{item.totalPrice}}</label>元</view>
+              <!-- <label class="topbox-rt">
+              <block wx:if="{{item.status == 3}}">
+                  已完成
+                </block>
+              </label> -->
+            </view>
+            <view class="com-centerbox">
+              <image src="{{item.proofImage}}" class="com-lf-img"></image>
+              <view class="com-rt-box">
+                <view>报修编号：{{item.orderNum}}</view>
+                <view>报修时间:：{{item.createTime}}</view>
+                <view>报修时效:{{item.levelName}}</view>
+                 <view>维修说明：{{item.description}}</view>
+              </view>
+            </view>
+          </view>
+          <view class="bottom2">
+            <!-- <button class="btom-btn">{{coment}}查看评价</button> -->
+            <block wx:if="{{item.critic == 1}}">
+              <button class="btom-btn" data-id="{{item.id}}" bindtap='checkcomment' data-orderId="{{item.orderId}}" data-serverId="{{item.serverId}}">{{coment}}查看评价</button>
+            </block>
+            <block wx:elif="{{item.critic == 0}}">
+              <button class="btom-btn" data-id="{{item.id}}" bindtap='comment' data-orderId="{{item.orderId}}" data-serverId="{{item.serverId}}">{{coment}}评价订单</button>
+            </block>
+          </view>
+          <!-- <view class="themes-list-main">  
+            <view class="themes-list-name">{{item}}</view>  
+          </view>   -->
+        </view>
+      </view> 
+      <view class="loading" hidden="{{!listLoading}}"><image class='iconloading' src='../../images/icon2-loading.gif'></image> 正在载入更多...</view>  
+      <view class="loading complete" hidden="{{!listLoadingComplete}}">已加载全部</view>  
+    </scroll-view>  
+  </swiper-item>  
+</swiper>  
+  

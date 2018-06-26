@@ -1,0 +1,7 @@
+
+{
+  "navigationBarTitleText": "维修",
+  "usingComponents": {
+    "dialog": "../../component2/repmodel/repmodel"
+  }
+}
